@@ -58,7 +58,7 @@ from keras.models import model_from_json
 from keras.models import load_model
 model_json = model.to_json()
 
-with open("model_num.json" , "w") as json_file:
+with open("../datasets/model_num.json" , "w") as json_file:
     json_file.write(model_json)
 
-model.save_weights("model_num.h5")
+model.save_weights("../datasets/model_num.h5")
