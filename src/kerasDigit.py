@@ -4,7 +4,7 @@ from keras.layers import Input, Dense, Flatten, Convolution2D, MaxPooling2D, Dro
 from keras.utils import np_utils # utilities for one-hot encoding of ground truth values
 
 batch_size = 128 # in each iteration, we consider 128 training examples at once
-num_epochs = 5 # we iterate twelve times over the entire training set
+num_epochs = 12 # we iterate twelve times over the entire training set
 kernel_size = 3 # we will use 3x3 kernels throughout
 pool_size = 2 # we will use 2x2 pooling throughout
 conv_depth = 32 # use 32 kernels in both convolutional layers
@@ -32,7 +32,7 @@ Y_train = np_utils.to_categorical(y_train, num_classes) # One-hot encode the lab
 Y_test = np_utils.to_categorical(y_test, num_classes) # One-hot encode the labels
 
 inp = Input(shape=(height, width, depth)) # N.B. TensorFlow back-end expects channel dimension last
-# Conv [32] -> Conv [32] -> Pool (with dropout on the pooling layer)
+#> Conv [32] - Conv [32] -> Pool (with dropout on the pooling layer)
 conv_1 = Convolution2D(conv_depth, (kernel_size, kernel_size), padding='same', activation='relu')(inp)
 conv_2 = Convolution2D(conv_depth, (kernel_size, kernel_size), padding='same', activation='relu')(conv_1)
 pool_1 = MaxPooling2D(pool_size=(pool_size, pool_size))(conv_2)

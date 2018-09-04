@@ -1,3 +1,4 @@
+
 from keras.models import model_from_json
 from matplotlib.pyplot import plot as plt
 from keras.preprocessing import image
@@ -22,4 +23,5 @@ img = image.img_to_array(img)
 X_train = img.reshape(1, 28, 28, 1)
 X_train = X_train.astype("float32")
 img_class = loaded_model.predict(X_train)
+print np.argmax(img_class , axis=1)
 print "Class : {} ".format(img_class)
