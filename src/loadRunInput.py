@@ -16,12 +16,27 @@ loaded_model = model_from_json(loaded_model_json)
 loaded_model.load_weights("../datasets/model_num.h5")
 print("Loaded model from disk")
 
-loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+import matplotlib.pyplot as plt
 
-img = image.load_img(path="../datasets/2.png",color_mode="grayscale",target_size=(28,28))
+loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+img = image.load_img(path="../datasets/5.png",color_mode="rgb",target_size=(28,28))
 img = image.img_to_array(img)
-X_train = img.reshape(1, 28, 28, 1)
-X_train = X_train.astype("float32")
-img_class = loaded_model.predict(X_train)
+
+img = img.reshape(1,28,28,1)
+img = img.astype("float32")
+img /=255
+print img
+print type(img)
+import matplotlib.image as mpimg
+
+img = np.squeeze(img , axis=0)
+imaj = image.array_to_img(img)
+plt.figure()
+plt.imshow(imaj) 
+plt.show()  # display it
+
+
+
+img_class = loaded_model.predict(img)
 print np.argmax(img_class , axis=1)
 print "Class : {} ".format(img_class)
