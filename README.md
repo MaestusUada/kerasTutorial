@@ -1,5 +1,3 @@
 # kerasTutorial
 
-to run 
-
-python drawingPad.py
+MNIST DATASET TEST WITH TENSORFLOW & KERAS
