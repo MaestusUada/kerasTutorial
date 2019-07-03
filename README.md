@@ -1,3 +1,3 @@
 # kerasTutorial
 
-MNIST DATASET TEST WITH TENSORFLOW & KERAS
+Testing mnist dataset using touchpad.  
